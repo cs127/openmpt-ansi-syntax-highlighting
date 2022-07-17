@@ -19,7 +19,6 @@ Options:
 
 Using the -d option does nothing if the -r option is enabled.
 
-
 Colors:
 `X,X,X,X,X,X,X` - Each value from 0 to 15 (Discord only supports 0 to 7)\
 format: `default,note,instrument,volume,panning,pitch,global`\
