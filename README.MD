@@ -15,6 +15,7 @@ Options:
 * `-i`: Read input from STDIN instead of clipboard
 * `-o`: Write output to STDOUT instead of clipboard
 * `-d`: Automatically wrap output in `ansi` markdown code block (for Discord)
+* `-r`: Reverse mode - removes syntax highlighting instead of adding
 
 Colors:
 `X,X,X,X,X,X,X` - Each value from 0 to 15 (Discord only supports 0 to 7)\

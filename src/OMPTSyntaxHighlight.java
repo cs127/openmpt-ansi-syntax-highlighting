@@ -2,6 +2,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -30,6 +32,7 @@ public class OMPTSyntaxHighlight {
         boolean useStdIn = options.contains('i');
         boolean useStdOut = options.contains('o');
         boolean autoMarkdown = options.contains('d');
+        boolean reverse = options.contains('r');
 
         // Show help (and then exit) if the help option is provided
         if (help) {
@@ -40,6 +43,9 @@ public class OMPTSyntaxHighlight {
             System.out.println("-i             Read input from STDIN instead of clipboard                    ");
             System.out.println("-o             Write output to STDOUT instead of clipboard                   ");
             System.out.println("-d             Automatically wrap output in markdown code block (for Discord)");
+            System.out.println("-r             Reverse mode - removes syntax highlighting instead of adding  ");
+            System.out.println("                                                                             ");
+            System.out.println("Using the -d option does nothing if the -r option is enabled.                ");
             System.out.println("                                                                             ");
             System.out.println("Colors:                                                                      ");
             System.out.println("X,X,X,X,X,X,X  Each value from 0 to 15 (Discord only supports 0 to 7)        ");
@@ -72,45 +78,54 @@ public class OMPTSyntaxHighlight {
                 while (scanner.hasNextLine()) dataBuilder.append(scanner.nextLine()).append(NEWLINE);
                 data = dataBuilder.toString();
             } else data = (String)clipboard.getData(DataFlavor.stringFlavor);
-        } catch (Exception e) {
-            System.out.printf("Unable to read %s.%n", useStdIn ? "STDIN" : "clipboard");
+        } catch (UnsupportedFlavorException | IOException e) {
+            System.out.println("Unable to read clipboard.");
             System.exit(1);
         }
 
-        // Get module format
-        String f = data.substring(HEADER.length(), HEADER.length() + 3);
-
-        // Check if data is valid OpenMPT pattern data
-        if (!data.startsWith(HEADER) || !(Arrays.asList(FORMATS_M).contains(f) || Arrays.asList(FORMATS_S).contains(f))) {
+        // Try to get the module format and check if the data is valid OpenMPT pattern data
+        String f = "";
+        try {
+            f = data.substring(HEADER.length(), HEADER.length() + 3);
+            if (!data.startsWith(HEADER) || !(Arrays.asList(FORMATS_M).contains(f) || Arrays.asList(FORMATS_S).contains(f)))
+                throw new IllegalArgumentException();
+        } catch (RuntimeException e) {
             System.out.printf("%s does not contain OpenMPT pattern data.%n", useStdIn ? "STDIN" : "Clipboard");
             System.exit(2);
         }
 
-        // Add colors and stuff
-        StringBuilder resultBuilder = new StringBuilder();
-        int relPos = -1;
-        int color = -1;
-        int previousColor = -1;
-        for (int p = 0; p < data.length(); p++) {
-            char c = data.charAt(p);
-            if (c == '|') relPos = 0;
-            if (relPos == 0) color = colors[0];                         // Channel separator
-            if (relPos == 1) color = colors[getNoteColor(c)];           // Note
-            if (relPos == 4) color = colors[getInstrumentColor(c)];     // Instrument
-            if (relPos == 6) color = colors[getVolumeCmdColor(c)];      // Volume command
-            if (relPos >= 9) {                                          // Effect command(s)
-                if (relPos % 3 == 0) color = colors[getEffectCmdColor(c, f)];
-                if (relPos % 3 != 0 && c == '.' && data.charAt(p - (relPos % 3)) != '.') c = '0';
+        // Remove colors if the input is already syntax-highlighted
+        data = data.replaceAll("\u001B\\[\\d+(;\\d+)*m", "");
+
+        String result;
+
+        // Add colors if reverse mode is not enabled
+        if (!reverse) {
+            StringBuilder resultBuilder = new StringBuilder();
+            int relPos = -1;
+            int color = -1;
+            int previousColor = -1;
+            for (int p = 0; p < data.length(); p++) {
+                char c = data.charAt(p);
+                if (c == '|') relPos = 0;
+                if (relPos == 0) color = colors[0];                         // Channel separator
+                if (relPos == 1) color = colors[getNoteColor(c)];           // Note
+                if (relPos == 4) color = colors[getInstrumentColor(c)];     // Instrument
+                if (relPos == 6) color = colors[getVolumeCmdColor(c)];      // Volume command
+                if (relPos >= 9) {                                          // Effect command(s)
+                    if (relPos % 3 == 0) color = colors[getEffectCmdColor(c, f)];
+                    if (relPos % 3 != 0 && c == '.' && data.charAt(p - (relPos % 3)) != '.') c = '0';
+                }
+                if (color != previousColor) resultBuilder.append(getSGRCode(color));
+                resultBuilder.append(c);
+                previousColor = color;
+                if (relPos >= 0) relPos++;
             }
-            if (color != previousColor) resultBuilder.append(getSGRCode(color));
-            resultBuilder.append(c);
-            previousColor = color;
-            if (relPos >= 0) relPos++;
-        }
-        String result = resultBuilder.toString();
+            result = resultBuilder.toString();
+        } else result = data;
 
         // Wrap in code block for Discord if specified
-        if (autoMarkdown) result = "```ansi" + NEWLINE + result + "```";
+        if (autoMarkdown && !reverse) result = "```ansi" + NEWLINE + result + "```";
 
         // Write to clipboard/STDOUT
         if (useStdOut) System.out.print(result);
