@@ -6,6 +6,11 @@ This Java program adds syntax highlighting to your clipboard (using ANSI color c
 
 The main purpose of this program is to paste syntax-highlighted OpenMPT pattern data in [Discord](https://discord.com), using `ansi` markdown code blocks.
 
+## Demo
+
+Discord screenshot, showing a section of an OpenMPT pattern, with and without syntax highlighting.
+![Screenshot](DEMO.PNG)
+
 ## Command-line usage
 
 `[EXEC] [OPTIONS] [COLORS]`
@@ -17,7 +22,7 @@ Options:
 * `-d`: Automatically wrap output in `ansi` markdown code block (for Discord)
 * `-r`: Reverse mode - removes syntax highlighting instead of adding
 
-Using the -d option does nothing if the -r option is enabled.
+Using the `-d` option does nothing if the `-r` option is enabled.
 
 Colors:
 `X,X,X,X,X,X,X` - Each value from 0 to 15 (Discord only supports 0 to 7)\
