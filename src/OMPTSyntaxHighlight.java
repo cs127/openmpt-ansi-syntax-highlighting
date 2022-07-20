@@ -42,7 +42,7 @@ public class OMPTSyntaxHighlight {
             System.out.println("-h | --help    Help (display this screen)                                    ");
             System.out.println("-i             Read input from STDIN instead of clipboard                    ");
             System.out.println("-o             Write output to STDOUT instead of clipboard                   ");
-            System.out.println("-d             Automatically wrap output in markdown code block (for Discord)");
+            System.out.println("-d             Automatically wrap output in Markdown code block (for Discord)");
             System.out.println("-r             Reverse mode - removes syntax highlighting instead of adding  ");
             System.out.println("                                                                             ");
             System.out.println("Using the -d option does nothing if the -r option is enabled.                ");

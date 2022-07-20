@@ -4,7 +4,7 @@
 
 This Java program adds syntax highlighting to your clipboard (using ANSI color codes) when copying pattern data in [OpenMPT](https://openmpt.org).
 
-The main purpose of this program is to paste syntax-highlighted OpenMPT pattern data in [Discord](https://discord.com), using `ansi` markdown code blocks.
+The main purpose of this program is to paste syntax-highlighted OpenMPT pattern data in [Discord](https://discord.com), using `ansi` Markdown code blocks.
 
 ## Demo
 
@@ -19,7 +19,7 @@ Options:
 * `-h` or `--help`: Help (show all available options)
 * `-i`: Read input from STDIN instead of clipboard
 * `-o`: Write output to STDOUT instead of clipboard
-* `-d`: Automatically wrap output in `ansi` markdown code block (for Discord)
+* `-d`: Automatically wrap output in `ansi` Markdown code block (for Discord)
 * `-r`: Reverse mode - removes syntax highlighting instead of adding
 
 Using the `-d` option does nothing if the `-r` option is enabled.
@@ -63,7 +63,7 @@ if not provided: `7,5,4,2,6,3,1,7`
         </td>
     </tr>
     <tr>
-        <td>Impulse Tracker ("Camouflage")</td>
+        <td>Impulse Tracker</td>
         <td><img src="ASSETS/COLOR/IT_0.PNG"/></td>
         <td><img src="ASSETS/COLOR/IT_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/IT_DIS.PNG"/></td>
@@ -73,7 +73,7 @@ if not provided: `7,5,4,2,6,3,1,7`
         </td>
     </tr>
     <tr>
-        <td>FastTracker 2 ("Why Colors?")</td>
+        <td>FastTracker 2</td>
         <td><img src="ASSETS/COLOR/FT2_0.PNG"/></td>
         <td><img src="ASSETS/COLOR/FT2_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/FT2_DIS.PNG"/></td>
