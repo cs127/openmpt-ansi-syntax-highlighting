@@ -48,8 +48,8 @@ if not provided: `7,5,4,2,6,3,1,7`
         <td><img src="ASSETS/COLOR/DEF_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/DEF_DIS.PNG"/></td>
         <td>
-            Dark: <code>7,5,4,2,6,3,1,7</code><br/>
-            Bright: <code>15,13,12,10,14,11,9,15</code>
+            Dark:<br/><code>7,5,4,2,6,3,1,7</code><br/>
+            Bright:<br/><code>15,13,12,10,14,11,9,15</code>
         </td>
     </tr>
     <tr>
@@ -58,8 +58,8 @@ if not provided: `7,5,4,2,6,3,1,7`
         <td><img src="ASSETS/COLOR/MPT_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/MPT_DIS.PNG"/></td>
         <td>
-            Dark: <code>7,4,6,2,6,3,1,7</code><br/>
-            Bright: <code>15,12,14,10,14,11,9,15</code>
+            Dark:<br/><code>7,4,6,2,6,3,1,7</code><br/>
+            Bright:<br/><code>15,12,14,10,14,11,9,15</code>
         </td>
     </tr>
     <tr>
@@ -68,8 +68,8 @@ if not provided: `7,5,4,2,6,3,1,7`
         <td><img src="ASSETS/COLOR/IT_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/IT_DIS.PNG"/></td>
         <td>
-            Dark: <code>2,2,2,6,7,2,2,3</code><br/>
-            Bright: <code>10,10,10,14,15,10,10,11</code>
+            Dark:<br/><code>2,2,2,6,7,2,2,3</code><br/>
+            Bright:<br/><code>10,10,10,14,15,10,10,11</code>
         </td>
     </tr>
     <tr>
@@ -78,8 +78,8 @@ if not provided: `7,5,4,2,6,3,1,7`
         <td><img src="ASSETS/COLOR/FT2_1.PNG"/></td>
         <td><img src="ASSETS/COLOR/FT2_DIS.PNG"/></td>
         <td>
-            Dark: <code>3,3,3,3,3,3,3,6</code><br/>
-            Bright: <code>11,11,11,11,11,11,11,14</code>
+            Dark:<br/><code>3,3,3,3,3,3,3,6</code><br/>
+            Bright:<br/><code>11,11,11,11,11,11,11,14</code>
         </td>
     </tr>
 </table>
