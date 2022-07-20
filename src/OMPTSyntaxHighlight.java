@@ -133,7 +133,7 @@ public class OMPTSyntaxHighlight {
             StringSelection selection = new StringSelection(result);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 System.out.println("linux moment");
             }
