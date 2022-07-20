@@ -13,7 +13,7 @@ public class OMPTSyntaxHighlight {
     static final String HEADER = "ModPlug Tracker ";
     static final String[] FORMATS_M = {"MOD", " XM"};
     static final String[] FORMATS_S = {"S3M", " IT", "MPT"};
-    static final int[] DEFAULT_COLORS = {7, 5, 4, 2, 6, 3, 1};
+    static final int[] DEFAULT_COLORS = {7, 5, 4, 2, 6, 3, 1, 7};
     static final String NEWLINE = System.lineSeparator();
 
 
@@ -48,9 +48,9 @@ public class OMPTSyntaxHighlight {
             System.out.println("Using the -d option does nothing if the -r option is enabled.                ");
             System.out.println("                                                                             ");
             System.out.println("Colors:                                                                      ");
-            System.out.println("X,X,X,X,X,X,X  Each value from 0 to 15 (Discord only supports 0 to 7)        ");
-            System.out.println("format: default,note,instrument,volume,panning,pitch,global                  ");
-            System.out.println("if not provided: 7,5,4,2,6,3,1                                               ");
+            System.out.println("X,X,X,X,X,X,X,X  Each value from 0 to 15 (Discord only supports 0 to 7)      ");
+            System.out.println("format: Default,Note,Instrument,Volume,Panning,Pitch,Global,ChannelSeparator ");
+            System.out.println("if not provided: 7,5,4,2,6,3,1,7                                             ");
             System.exit(0);
         }
 
@@ -108,7 +108,7 @@ public class OMPTSyntaxHighlight {
             for (int p = 0; p < data.length(); p++) {
                 char c = data.charAt(p);
                 if (c == '|') relPos = 0;
-                if (relPos == 0) color = colors[0];                         // Channel separator
+                if (relPos == 0) color = colors[7];                         // Channel separator
                 if (relPos == 1) color = colors[getNoteColor(c)];           // Note
                 if (relPos == 4) color = colors[getInstrumentColor(c)];     // Instrument
                 if (relPos == 6) color = colors[getVolumeCmdColor(c)];      // Volume command
