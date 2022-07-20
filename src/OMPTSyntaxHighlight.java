@@ -155,7 +155,7 @@ public class OMPTSyntaxHighlight {
     }
 
     static String getSGRCode(int color) {
-        int n = color + ((color < 8) ? 30 : 90);
+        int n = color + ((color < 8) ? 30 : 82);
         return String.format("\u001B[%dm", n);
     }
 
