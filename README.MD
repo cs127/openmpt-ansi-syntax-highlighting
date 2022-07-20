@@ -44,30 +44,30 @@ if not provided: `7,5,4,2,6,3,1,7`
     </tr>
     <tr>
         <td>Default</td>
-        <td>![Preview](ASSETS/COLOR/DEF_0.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/DEF_1.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/DEF_DIS.PNG)</td>
-        <td>`7,5,4,2,6,3,1,7`</td>
+        <td><img src="ASSETS/COLOR/DEF_0.PNG"/></td>
+        <td><img src="ASSETS/COLOR/DEF_1.PNG"/></td>
+        <td><img src="ASSETS/COLOR/DEF_DIS.PNG"/></td>
+        <td><code>7,5,4,2,6,3,1,7</code></td>
     </tr>
     <tr>
         <td>OpenMPT</td>
-        <td>![Preview](ASSETS/COLOR/MPT_0.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/MPT_1.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/MPT_DIS.PNG)</td>
-        <td>`7,4,6,2,6,3,1,7`</td>
+        <td><img src="ASSETS/COLOR/MPT_0.PNG"/></td>
+        <td><img src="ASSETS/COLOR/MPT_1.PNG"/></td>
+        <td><img src="ASSETS/COLOR/MPT_DIS.PNG"/></td>
+        <td><code>7,4,6,2,6,3,1,7</code></td>
     </tr>
     <tr>
         <td>Impulse Tracker ("Camouflage")</td>
-        <td>![Preview](ASSETS/COLOR/IT_0.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/IT_1.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/IT_DIS.PNG)</td>
-        <td>`2,2,2,6,7,2,2,3`</td>
+        <td><img src="ASSETS/COLOR/IT_0.PNG"/></td>
+        <td><img src="ASSETS/COLOR/IT_1.PNG"/></td>
+        <td><img src="ASSETS/COLOR/IT_DIS.PNG"/></td>
+        <td><code>2,2,2,6,7,2,2,3</code></td>
     </tr>
     <tr>
         <td>FastTracker 2 ("Why Colors?")</td>
-        <td>![Preview](ASSETS/COLOR/FT2_0.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/FT2_1.PNG)</td>
-        <td>![Preview](ASSETS/COLOR/FT2_DIS.PNG)</td>
-        <td>`3,3,3,3,3,3,3,6`</td>
+        <td><img src="ASSETS/COLOR/FT2_0.PNG"/></td>
+        <td><img src="ASSETS/COLOR/FT2_1.PNG"/></td>
+        <td><img src="ASSETS/COLOR/FT2_DIS.PNG"/></td>
+        <td><code>3,3,3,3,3,3,3,6</code></td>
     </tr>
 </table>
