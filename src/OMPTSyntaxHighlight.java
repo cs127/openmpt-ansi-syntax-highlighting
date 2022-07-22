@@ -72,15 +72,17 @@ public class OMPTSyntaxHighlight {
         String data = "";
 
         // Read clipboard/STDIN
-        try {
-            if (useStdIn) { // what am I doing with my life
-                StringBuilder dataBuilder = new StringBuilder();
-                while (scanner.hasNextLine()) dataBuilder.append(scanner.nextLine()).append(NEWLINE);
-                data = dataBuilder.toString();
-            } else data = (String)clipboard.getData(DataFlavor.stringFlavor);
-        } catch (UnsupportedFlavorException | IOException e) {
-            System.out.println("Unable to read clipboard.");
-            System.exit(1);
+        if (useStdIn) {
+            StringBuilder dataBuilder = new StringBuilder();
+            while (scanner.hasNextLine()) dataBuilder.append(scanner.nextLine()).append(NEWLINE);
+            data = dataBuilder.toString();
+        } else {
+            try {
+                data = (String)clipboard.getData(DataFlavor.stringFlavor);
+            } catch (UnsupportedFlavorException | IOException e) {
+                System.out.println("Unable to read clipboard.");
+                System.exit(1);
+            }
         }
 
         // Try to get the module format and check if the data is valid OpenMPT pattern data
@@ -189,7 +191,7 @@ public class OMPTSyntaxHighlight {
         } else if (Arrays.asList(FORMATS_M).contains(f)) { // MOD/XM
             switch (c) {
                 case '5', '6', '7', 'A', 'C' -> color = 3; // Volume
-                case '8', 'P'                -> color = 4; // Panning
+                case '8', 'P', 'Y'           -> color = 4; // Panning
                 case '1', '2', '3', '4', 'X' -> color = 5; // Pitch
                 case 'B', 'D', 'F', 'G', 'H' -> color = 6; // Global
             }
